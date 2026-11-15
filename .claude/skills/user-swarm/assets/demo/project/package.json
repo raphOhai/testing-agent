@@ -1,0 +1,7 @@
+{
+  "name": "swarm-__PROJECT__",
+  "private": true,
+  "type": "module",
+  "description": "User-swarm config for __PROJECT__. Install extra tools here when needed: playwright (for --ui), mongodb / pg / mysql2 (for checks and cleanup that read the database).",
+  "devDependencies": {}
+}

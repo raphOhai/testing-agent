@@ -1,0 +1,17 @@
+# Dependencies (reinstall with npm install)
+node_modules/
+
+# Swarm run output: ledgers and reports are generated per run
+runs/
+
+# Secrets for staging (admin tokens, DB URLs)
+.env
+
+# macOS
+.DS_Store
+
+# Skill-creator test workspace (one-off eval outputs)
+user-swarm-workspace/
+
+# Local Claude Code settings
+.claude/settings.local.json

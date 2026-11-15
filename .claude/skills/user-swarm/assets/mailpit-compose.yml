@@ -1,0 +1,16 @@
+# Mailpit: a fake inbox that catches every email the staging app sends.
+#   docker compose -f mailpit-compose.yml up -d
+#   Web inbox:  http://localhost:8025      SMTP for the app:  localhost:1025 (no TLS, any login)
+# Point the STAGING app's SMTP settings at it. Without Docker: `brew install mailpit && mailpit --max 0`
+services:
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: swarm-mailpit
+    restart: unless-stopped
+    ports:
+      - "8025:8025"   # web inbox + API (the swarm reads from here)
+      - "1025:1025"   # SMTP (the app sends to here)
+    environment:
+      MP_MAX_MESSAGES: 0               # default is 500 and older mail is silently deleted; 0 = keep everything
+      MP_SMTP_AUTH_ACCEPT_ANY: 1       # accept whatever username/password the app sends
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1   # allow login without TLS

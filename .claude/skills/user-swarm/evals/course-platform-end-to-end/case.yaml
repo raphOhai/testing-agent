@@ -1,0 +1,13 @@
+schema_version: "1.1"
+name: course-platform-end-to-end
+context:
+  scaffold_script: place-files.sh
+expected_outcome: |
+  Following the skill on an app it has never seen, Claude reads the LearnLoop code, writes
+  JOURNEYS.md (roles, steps, every email with its trigger and delay, the two scheduled jobs),
+  builds a project folder (config + personas + checks + fast-forward + cleanup) that passes the
+  safety check with localhost confirmed and learnloop.io blocked, runs 1, 10 and 40 users, and
+  produces report.html/report.md. The report catches the planted bug: the "Pick up where you left
+  off" study reminder is also sent to learners who already completed the course (unexpected
+  recipients), traced to src/jobs/index.mjs. Revenue (in cents) matches. Cleanup is previewed,
+  not executed.
